@@ -1,0 +1,84 @@
+function Validar(){
+	now = new Date;
+	var n = document.getElementById("nome").value;	
+	var dc = document.getElementById("datacadastro").value;
+	var dc = dc.split("/");
+	var df = document.getElementById("datafundacao").value;
+	var df = df.split("/");
+	var e = document.getElementById("email").value;
+	var TamanhoNome = n.length;
+	var TamanhoEmail = e.length;	
+	var dca = false;
+	var dfu = false;
+	var no = false;    		 
+	var em = false;		
+	
+//Validação do nome//
+	if (TamanhoNome>=1){	
+		no = true;
+	}
+
+	else{
+		$(".NomeErrado").show();
+		document.getElementById("nome").value = " ";	
+	}
+
+//Validação do email//	
+		for (var i=0; i<=TamanhoEmail; i++){
+			if (e[i]=='@'){	
+				em=true;
+			}
+		}
+		if (em==false){
+			$(".EmailErrado").show();
+				document.getElementById("email").value = " ";	
+		}
+
+//Validação da data Cadastro//
+	if ((dc[2] < 2016) && (dc[2]>=2000)){				
+		dca= true;
+	}
+	else if (((dc[2] <= now.getFullYear()) && (dc[2] >= 2000)) && (dc[1] <= ((now.getMonth())+1)) && (dc[0] <= now.getDay())){
+		dca= true;	
+	}
+					
+	else{
+		$(".DataCadastroErrada").show();
+		document.getElementById("datacadastro").value = " ";	
+	}
+
+//Validação da data Fundação//
+	if ((df[2] < 2016) && (df[2]>=1950)){				
+		dfu=true;	
+	}
+	else if (((df[2] <= now.getFullYear()) && (df[2] >= 2000)) && (df[1] <= ((now.getMonth()) + 1)) && (df[0] <= now.getDay())){
+		dfu=true;	
+	}
+					
+	else{
+		$(".DataFundacaoErrada").show();
+		document.getElementById("datafundacao").value = " ";	
+	}
+
+//Mensagem de ok//
+	if((em==true) && (no==true) && (dca==true) && (dfu==true)){
+		$(".NomeErrado").hide();
+		$(".DataCadatroErrada").hide();
+		$(".DataFundacaoErrada").hide();
+		$(".EmailErrado").hide();	
+		document.getElementById("nome").value = " ";
+		document.getElementById("datacadastro").value = " ";
+		document.getElementById("datafundacao").value = " ";					
+		document.getElementById("email").value = " ";
+		alert("Dados gravados com sucesso!");
+	}
+};
+
+function limpa(){
+	document.querySelector("#nome").value = " ";
+	document.querySelector("#datacadastro").value = " ";
+	document.querySelector("#datafundacao").value = " ";
+	document.querySelector("#email").value = " ";
+	$(".NomeErrado, .DataCadastroErrada, .DataFundacaoErrada, .EmailErrado").hide();
+	$("#nome").focus();
+};

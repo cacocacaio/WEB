@@ -1,0 +1,16 @@
+$(document).ready (function(e){
+	//$(".conteudo").load("home.html" + " .conteudo")
+	
+	$ (".header a").click (function(e){
+		e.preventDefault();
+		var href = $(this) . attr('href');
+		$(".conteudo").load(href+" .conteudo");
+	});
+});
+
+function carega(e){
+	
+	e.preventDefault();
+	var href = $(this) . attr('href');
+	$(".conteudo").load(href+" .conteudo");
+};

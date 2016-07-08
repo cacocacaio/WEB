@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery UI Datepicker functionality</title>
+	<script type ="text/javascript" src ="jquery-2.1.1.min.js"></script>
+	<script type ="text/javascript" src ="jquery.maskedinput.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type ="text/javascript" src ="datepicker-pt-BR.js"></script>
+	<script type="text/javascript" src="valida.js"></script>
+</head>
+
+<style>
+	#nome{
+		margin: 0px 20px;
+	}
+
+	#email{
+		margin: 0px 20px;
+	}
+
+	#datacadastro{
+		margin: 0px 20px;
+	}
+
+	#datafundacao{
+		margin: 0px 20px;
+	}
+
+	.NomeErrado{
+		position:absolute;	
+		margin: -60px 350px;		
+	}
+
+	.EmailErrado{
+		position:absolute;	
+		margin: -60px 350px;		
+	}
+
+	.DataFundacaoErrada{
+		position:absolute;
+		margin: -60px 400px;			
+	}
+
+	.DataCadastroErrada{
+		position:absolute;
+		margin: -60px 400px;			
+	}
+	img{
+		max-width : 20px; 
+		max-height : 20px;
+		position: relative;
+		top: 8px;
+		width : auto; 
+		height : auto;
+	}
+</style>	
+<body>
+<script>
+$(document).ready(function(){
+	$("#datafundacao").datepicker({
+		showOn : "button",
+		buttonImage: "calendario.png",
+		buttonImageOnly: true
+	});
+
+	$("#datacadastro").datepicker({
+		showOn : "button",
+		buttonImage: "calendario.png",
+		buttonImageOnly: true
+	});
+
+	$(".NomeErrado").hide();
+	$(".DataCadastroErrada").hide();
+	$(".DataFundacaoErrada").hide();
+	$(".EmailErrado").hide();
+});
+
+</script>
+
+	<form id="formulario">
+		<table border="0">
+			<tr>
+				<th align=left><label for="nome">Nome: </label></th>
+				<td> <input type="text" name="nome" id="nome"/></td>
+				<td> <span id="NomeErrado"> Nome Invalido</span></td>
+			</tr>
+
+			<tr>
+				<th align=left><label for="datacadastro">Data de Cadastro: </label></th>
+				<td><input type="text" name="datacadastro" id="datacadastro" value="" class="field left" readonly/></td>
+				<td><span id="DataCadastroErrada"> Data Invalida</span></td>
+			</tr>
+
+
+			<tr>
+				<th align=left><label for="datafundacao">Data de Fundadacao: </label></th>
+				<td><input type="text" name="datafundacao" id="datafundacao" value="" class="field left" readonly/></td>
+				<td><span id="DataFundacaoErrada"> Data Invalida</span></td>
+			</tr>
+
+			<tr>
+				<th align=left><label for="email">Email: </label></th>
+				<td><input type="text" name="email" id="email"/></td>
+				<td><span id="EmailErrado">E-mail Invalido</span></td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr>
+				<td align=right><input type="button" value="Limpar" onclick="limpa()"></td>
+				<td align=right><input type="button" value="Enviar" onclick="Validar()"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
