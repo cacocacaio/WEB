@@ -1,0 +1,48 @@
+.logo{
+    position: fixed;
+    max-height: 34px;
+    left: 0;
+    top: 2px;
+}
+.menu{
+    position: fixed;
+    display: inline-block;
+    width: 100%;
+    background-color: #00adef;
+    top: 2px;
+    left: 10px;
+    height: auto;
+}
+.menu ul li{
+    position: inherit;
+    float: left;
+    display: block;
+    padding: inherit;
+    font-family: arial;
+    color: rgb(250,240,250);
+}
+.menu a{
+    color: white;
+    text-decoration: none;
+}
+body{
+    background-color: rgb(245,235,245);
+}
+.conteudo{
+    position: absolute;
+    top: 10%;
+    font-family: arial;
+    width: 80%;
+    left: 2.5%;
+}
+
+
+.rodape{
+    position: fixed;
+    width: 100%;
+    background-color: #00adef;
+    left: 0px;
+    bottom: 0px;
+    text-align: center;
+    color: rgb(250,240,250);
+}
