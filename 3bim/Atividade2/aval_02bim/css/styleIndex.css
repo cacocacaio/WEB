@@ -1,0 +1,92 @@
+body {
+
+	background-color: #242424;
+}
+
+.header {
+
+	position: absolute;
+	top: 0px;
+	width: 99%;
+	background-color: #161616;
+}
+
+.header td {
+
+	padding-right: 80px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+.header img {
+
+	height: 120px;
+	border-radius: 3px;
+}
+
+.conteudo {
+	
+	position: absolute;
+	top: 120px;
+	color: white;
+	width: 99%;
+	text-align: center;
+	
+}
+
+.rodape {
+
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+	width: 99%;
+	background-color: #161616;
+	color: white;
+}
+
+.HOME {
+	background-color:#4cde70;
+	-moz-border-radius:17px;
+	-webkit-border-radius:17px;
+	border-radius:17px;
+	border:1px solid #1f001f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	font-weight:bold;
+	padding:20px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+}
+
+.HOME:hover {
+	background-color:#6cb842;
+}
+
+.HOME:active {
+	position:relative;
+	top:1px;
+}
+
+.conteudo table thead {
+	background-color:#4cde70;
+}
+
+.conteudo table tbody {
+	background-color:#161616;
+}
+
+.conteudo table thead:hover {
+	background-color:#6cb842;
+}
+
+.conteudo table tbody tr:hover {
+	background-color:#323232;
+}
+
+.conteudo table .HOME {
+	padding:2px 10px;
+	font-size:13px;
+}

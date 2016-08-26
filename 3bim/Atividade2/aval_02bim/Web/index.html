@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<link type="text/css" href="jquery-ui.css" rel="stylesheet">
+	<script type="text/javascript" src="jquery-2.1.1.min.js "></script>
+	<script type="text/javascript" src="jquery-ui.js"></script>
+	<script type="text/javascript" src="datepicker-pt-BR.js"></script>
+	<script type="text/javascript" src="jquery.maskedinput"></script>
+	<script type="text/javascript" src="valida.js"></script>
+</head>
+<style>
+</style>
+
+	
+<body>
+	<form id="formulario">
+		<table border="0">
+			<tr>
+				<th align=left><label for="nome">Nome: </label></th>
+				<td><input type="text" name="nome" id="nome"/></td>
+				<td><span id="textoNome">Nome Invalido</span></td>
+			</tr>
+
+			<tr>
+				<th align=left><label for="datacadastro">Data de Cadastro: </label></th>
+				<td><input type="text" name="datacadastro" id="datacadastro" value="" class="field left" readonly /></td>
+				<td><span id="textoDataCadastro"> Data Invalida</span></td>
+			</tr>
+
+
+			<tr>
+				<th align=left><label for="datafundacao">Data de Fundadacao: </label></th>
+				<td><input type="text" name="datafundacao" id="datafundacao" value="" class="field left" readonly /></td>
+				<td><span id="textoDataFundacao"> Data Invalida</span></td>
+			</tr>
+
+			<tr>
+				<th align=left><label for="email">Email: </label></th>
+				<td><input type="text" name="email" id="email"/></td>
+				<td><span id="textoEmail">E-mail Invalido</span></td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+			<tr>
+				<td align=right><input type="button" value="Limpar" onclick="limpa()"></td>
+				<td align=right><input type="button" value="Enviar" onclick="validar()"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
