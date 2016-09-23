@@ -25,6 +25,7 @@ class Welcome extends CI_Controller {
 	
 	public function cadastrar(){
 		
+		$this->load->library('table');
 		$this->load->helper('form');
 		$this->load->view('cadastrar');
 	}
@@ -42,6 +43,7 @@ class Welcome extends CI_Controller {
 	
 	public function cadastrar_registro(){
 		
+		$this->load->library('form_validation');
 		$data['nomeArquivo'] = $this->input->post('txt_nome_arquivo');
 		$data['titulo'] = $this->input->post('txt_titulo');
 		$data['autores'] = $this->input->post('txt_autores');
@@ -49,12 +51,12 @@ class Welcome extends CI_Controller {
 		$data['palavrasChave'] = $this->input->post('txt_palavras_chave');
 		$data['referencias'] = $this->input->post('txt_referencias');
 		
+		
 		if($this->db->insert('citacoes', $data)){
 			
 			redirect(base_url());
 		}else{
 			
-			echo "<script type='text/Javascript'> alert('Erro de conexão com o banco de dados!')</script>";
 			redirect(base_url('cadastrar'));
 		}
 	}

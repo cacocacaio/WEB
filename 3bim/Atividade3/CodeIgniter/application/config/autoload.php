@@ -61,7 +61,6 @@ $autoload['packages'] = array();
 */
 
 $autoload['libraries'] = array('database');
-$autoload['libraries'] = array('table');
 
 
 /*
