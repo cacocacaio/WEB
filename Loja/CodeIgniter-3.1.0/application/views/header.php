@@ -1,3 +1,5 @@
+
+		
 		<div class="container">
 			
 			<div class="masthead">
@@ -8,13 +10,19 @@
 					<li class="active"> <?php echo anchor(base_url(), "Home")?> </li>
 					<li class="dropdown">
 						
-						<?php echo anchor (base_url("produtos"), " Produtos <b class='caret'> </b>",
+						<?php echo anchor (base_url("produtos"), "Produtos <b class='caret'></b>",
 						array("class"=>"dropdown-toggle","data-toggle"=>"dropdown"));?>
-						<ul class ="dropdown-menu">
-							
-							<li><?php echo anchor(base_url(), "Categoria 1")?></li>
-							<li><?php echo anchor(base_url(), "Categoria 2")?></li>
-						</ul>
+							<ul class="dropdown-menu">
+		
+								<?php
+								
+									foreach($categorias as $categoria){
+										
+										echo "<li>".anchor(base_url("categoria/" . $categoria->id . "/".
+										limpar($categoria->titulo)), $categoria->titulo) . "</li>";
+									}
+								?>
+							</ul>
 					</li>
 					<li><?php echo anchor(base_url('fale-conosco'), "Fale Conosco") ?> </li>
 					<li>
