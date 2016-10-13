@@ -9,25 +9,23 @@
 				
 				<div class="row-fluid">
 					
-					<div class="span4">
-						
-						<h3>Destaque 1</h3>
-						<p>Produto 1 em destaque na loja.</p>
-						<a class="btn">Detalhes</a>
-					</div>
+					<?php
 					
-					<div class ="span4">
+						$contador = 0;
 						
-						<h3>Destaque 2</h3>
-						<p>Produto 2 em destaque na loja.</p>
-						<a class="btn">Detalhes</a>
-					</div>
-					
-					<div class ="span4">
-						
-						<h3>Destaque 3</h3>
-						<p>Produto 3 em destaque na loja.</p>
-						<a class="btn">Detalhes</a>
-					</div>
+						foreach($destaques as $destaque){
+							$contador ++;
+							echo "<div class = 'span4 caixacategoria'>" .
+								heading($destaque->titulo, 3) .
+								"<p>". word_limiter($destaque->descricao, 20) . "</p>" .
+								anchor(base_url("produto/". $destaque->id . "/" . limpar($destaque->titulo)), "Ver produto", array('class'=>'btn')) .
+								" </div >";
+							
+							if($contador%3==0){
+								
+								echo "</div> <div class = 'row-fluid'>";
+							}
+						}
+					?>
 				</div>
 			</div>
