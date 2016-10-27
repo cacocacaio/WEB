@@ -4,6 +4,15 @@
 			
 			<div class="masthead">
 				
+				<div id ="cadastro-e-login">
+					
+					<?php
+					
+						echo anchor(base_url("cadastro"), "Cadastro") . " " .
+						anchor(base_url("login"), "Login") ;
+					?> 
+				</div>	
+					
 				<?php echo heading('Lojão do Terceirão', 3, 'class="muted"');?>
 				<ul class="nav nav-tabs">
 					

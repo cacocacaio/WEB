@@ -1,12 +1,12 @@
-<div id = "homebody" >
+<div id="homebody" >
 	
-	<div class = "alinhado-centro borda-base espaco-vertical" >
+	<div class="alinhado-centro borda-base espaco-vertical" >
 		
 		<h3>Você buscou por : <?php echo $termo ?> </h3>
 		<p>Os seguintes resultados foram encontrados.</p>
 	</div>
 	
-	<div class = "row-fluid">
+	<div class="row-fluid">
 		
 		<?php
 		
