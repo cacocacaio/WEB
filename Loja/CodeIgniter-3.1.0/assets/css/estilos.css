@@ -26,3 +26,27 @@
 	padding-top: 10px;
 	margin-top: 10px;
 }
+
+.linha-carrinho{
+	line-height: 80 px; 
+	padding-bottom: 5 px; 
+	border-bottom: #CCC solid 1px;
+}
+
+.linha-carrinho input[type=text]{
+
+	height:40px;
+	width:70%;
+}
+
+.miniatura{
+ 
+	width: 80px;
+	max-height: 80px;
+	vertical-align: middle;
+}
+
+.texto-direita{
+
+	text-align: right;
+}

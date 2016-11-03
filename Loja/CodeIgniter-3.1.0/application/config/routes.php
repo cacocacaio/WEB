@@ -54,3 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['categoria/(:num)/(:any)'] = 'categorias/categoria/$1/$2';
 $route['produto/(:num)/(:any)'] = 'produtos/produto/$1/$2';
+$route['login'] = 'cadastro/form_login';
+$route['esqueci-minha-senha'] = 'cadastro/esqueci_minha_senha';
+$route ['logout'] = "cadastro/logout";

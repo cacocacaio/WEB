@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH')OR exit('No direct script access allowed');
 
 	class Cadastro extends CI_Controller{
 		
@@ -11,7 +11,7 @@
 			$this->categorias=$this->modelcategorias->listar_categorias();
 		}
 		
-		public function index() {
+		public function index(){
 			
 			$data_header['categorias'] = $this->categorias;
 			$this->load->view('html-header');
@@ -21,7 +21,7 @@
 			$this->load->view('html-footer');
 		}
 		
-		public function adicionar() {
+		public function adicionar(){
 			
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('nome', 'Nome', 'required|min_length [5]');
@@ -51,7 +51,7 @@
 				$dados['email'] = $this->input->post('email');
 				$dados['senha'] = $this->input->post('senha');
 			
-				if( $this->db->insert('clientes', $dados)) {
+				if( $this->db->insert('clientes', $dados)){
 					
 					$this->enviar_email_confirmacao( $dados);
 				}else{
@@ -61,11 +61,11 @@
 			}
 		}
 		
-		public function enviar_email_confirmacao ( $dados ){
+		public function enviar_email_confirmacao( $dados ){
 			
-			$mensagem = $this->load->view ('emails/confirmar_cadastro.php', $dados, TRUE) ;
-			$this->load->library('email') ;
-			$this->email->from ("EMAILVALIDO@gmail.com", "Confirmação de cadastro");
+			$mensagem = $this->load->view('emails/confirmar_cadastro.php', $dados, TRUE);
+			$this->load->library('email');
+			$this->email->from("EMAILVALIDO@gmail.com", "Confirmação de cadastro");
 			$this->email->to($dados['email']);
 			$this->email->subject('Lojão do Terceirão-confirmação de cadastro');
 			$this->email->message($mensagem);
@@ -100,6 +100,105 @@
 			}else{
 				
 				echo " Houve um erro ao confirmar seu cadastro";
+			}
+		}
+		
+		public function form_login(){
+			
+			$data_header['categorias'] = $this->categorias;
+			$this->load->view('html-header');
+			$this->load->view('header', $data_header);
+			$this->load->view('login');
+			$this->load->view('footer');
+			$this->load->view('html-footer');
+		}
+		
+		public function login(){
+			
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+			$this->form_validation->set_rules('senha', 'Senha', 'required');
+			if($this->form_validation->run()== FALSE){
+				
+				$this->form_login();
+			}else{
+				
+				$this->db->where('email',$this->input->post('email'));
+				$this->db->where('senha',$this->input->post('senha'));
+				$this->db->where('status',1);
+				$cliente = $this->db->get('clientes')->result();
+				if(count($cliente)== 1){
+					
+					$dadosSessao['cliente'] = $cliente[0];
+					$dadosSessao['logado'] = TRUE;
+					$this->session->set_userdata($dadosSessao);
+					redirect(base_url("produtos"));
+				}else{
+					
+					$dadosSessao['cliente'] = NULL ;
+					$dadosSessao['logado'] = FALSE ;
+					$this->session->set_userdata($dadosSessao);
+					redirect(base_url("login"));
+				}
+			}
+		}
+		
+		public function logout(){
+			$dadosSessao['cliente'] = NULL;
+			$dadosSessao['logado'] = FALSE;
+			$this->session->set_userdata($dadosSessao);
+			redirect(base_url("login"));
+		}
+		
+		public function esqueci_minha_senha(){
+			
+			$data_header['categorias'] = $this->categorias;
+			$this->load->view('html-header');
+			$this->load->view('header', $data_header);
+			$this->load->view('form_recupera_login');
+			$this->load->view('footer');
+			$this->load->view('html-footer');
+		}
+		
+		public function recuperar_login () {
+			
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+			$this->form_validation->set_rules('cpf', 'CPF', 'required| min_length[14]');
+			if($this->form_validation->run() == FALSE){
+				
+				$this->esqueci_minha_senha () ;
+			}else{
+				
+				$this->db->where('email', $this->input->post('email'));
+				$this->db->where('cpf', $this->input->post('cpf'));
+				$this->db->where('status', 1);
+				$cliente = $this->db->get('clientes')->result () ;
+				if(count($cliente) == 1){
+					
+					$dados = $cliente[0];
+					$mensagem= $this->load->view('emails/recuperar_senha.php', $dados, TRUE);
+					$this->load->library('email');
+					$this->email->from("EMAILVALIDO@gmail.com", "Lojão do Terceirão");
+					$this->email->to($dados['email']);
+					$this->email->subject('Lojão do Terceirão-confirmação de cadastro');
+					$this->email->message($mensagem);
+					if($this->email->send()){
+						
+						$data_header['categorias'] = $this->categorias;
+						$this->load->view('html-header');
+						$this->load->view('header', $data_header);
+						$this->load->view('senha_enviada');
+						$this->load->view('footer');
+						$this->load->view('html-footer');
+					}else{
+						
+						print_r($this->email->print_debugger());
+					}
+				}else{
+				
+					redirect( base_url("esqueci-minha-senha"));
+				}
 			}
 		}
 	}
