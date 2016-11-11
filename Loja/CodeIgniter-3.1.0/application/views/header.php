@@ -18,7 +18,7 @@
 							echo anchor(base_url("cadastro"), "Cadastro") . " " .
 							anchor(base_url("login"), "Login");
 						}
-						echo anchor(base_url("carrinho"),
+						echo " " . anchor(base_url("carrinho"),
 							"Carrinho[" . $this->cart->total_items() . "]");
 					?>
 				</div>	
